@@ -1,3 +1,58 @@
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+@mixin transform($transform){
+	-ms-transform: $transform; /* IE 9 */
+    -webkit-transform: $transform; /* Chrome, Safari, Opera */
+    transform: $transform;
+}	
+
+
 body{
 	background:#ddd;
 }
+
+#racetrack{
+	position: relative;
+	background: #333;
+	.road{
+		background: #333;
+		height: 100px;
+	}	
+	.turn-right{
+		background: #333;
+		height: 100px;
+		margin-left: 90%;
+	}
+	.turn-left{
+		background: #333;
+		height: 100px;
+		margin-right: 90%;
+	}
+	i{
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		font-size: 3em;
+		color: #fff;
+		@include transition(.2s);
+		&.up{
+			@include transform(rotate(270deg));
+		}
+		&.right{
+			@include transform(rotate(0deg));
+		}
+		&.down{
+			@include transform(rotate(90deg));
+		}
+		&.left{
+			@include transform(rotate(0deg));
+			@include transform(rotatey(180deg));
+		}
+	}
+}
+
+
