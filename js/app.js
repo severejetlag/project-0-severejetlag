@@ -43,25 +43,26 @@ function Car(num){
 	this.move = function(key){
 		let racetrackWidth = $('#racetrack').width();
 		let racetrackHeight = $('#racetrack').height();
-		let isXMax = this.carX <=100;
-		let isYMax = this.carY <=100;
+		let isXMax = this.carX <=racetrackWidth-this.carWidth;
+		let isYMax = this.carY <=racetrackHeight-this.carHeight;
 		let isXMin = this.carX >=0;
 		let isYMin = this.carY >=0;
+		let pixelIncrement = 10;
 		if((event.keyCode === 39 || event.keyCode === 68) && isXMax){
-			this.carX += 2;
-			$(`i[carId=${this.carId}]`).css('left',this.carX + '%').removeClass('up down left').addClass('right');
+			this.carX += pixelIncrement;
+			$(`i[carId=${this.carId}]`).css('left',this.carX + 'px').removeClass('up down left').addClass('right');
 		}
 		if((event.keyCode === 40 || event.keyCode === 83) && isYMax){
-			this.carY += 2;
-			$(`i[carId=${this.carId}]`).css('top',this.carY + '%').removeClass('up left right').addClass('down');
+			this.carY += pixelIncrement;
+			$(`i[carId=${this.carId}]`).css('top',this.carY + 'px').removeClass('up left right').addClass('down');
 		}
 		if((event.keyCode === 37 || event.keyCode === 65) && isXMin){
-			this.carX -= 2;
-			$(`i[carId=${this.carId}]`).css('left',this.carX + '%').removeClass('up down right').addClass('left');
+			this.carX -= pixelIncrement;
+			$(`i[carId=${this.carId}]`).css('left',this.carX + 'px').removeClass('up down right').addClass('left');
 		}
 		if((event.keyCode === 38 || event.keyCode === 87) && isYMin){
-			this.carY -= 2;
-			$(`i[carId=${this.carId}]`).css('top',this.carY + '%').removeClass('left down right').addClass('up');
+			this.carY -= pixelIncrement;
+			$(`i[carId=${this.carId}]`).css('top',this.carY + 'px').removeClass('left down right').addClass('up');
 		}
 	}
 }
@@ -74,7 +75,7 @@ $(document).ready(function(){
 	console.log(race.players);
 
 	// Create Key press actions to move for both players in any direction 
-	$('body').on('keydown',function(event){
+	$('body').on('keyup',function(event){
 		if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
 			event.preventDefault();
 			race.players[0].move(event.keyCode);
