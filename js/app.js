@@ -12,6 +12,8 @@ function Game(){
 			let lapHTML = '<div class="road"></div><div class="turn-right"></div><div class="road"></div><div class="turn-left"></div>';
 			$racetrack.append(lapHTML);
 		}
+		this.trackSizeX = $('#racetrack').width();
+		this.trackSizeY = $('#racetrack').height();
 	}
 	// Creates array of car objects. 
 	this.createCars = function(){
@@ -22,12 +24,24 @@ function Game(){
 		}
 
 	}
+	// Create method to check for win conditions after each button press
+	this.checkWin = function(){
+		for(let i = 0; i < this.players.length; i++){
+			// Grab X and Y max for player movement
+			let maxXTravel = this.trackSizeX - this.players[i].carWidth;
+			let maxYTravel = this.trackSizeY - this.players[i].carHeight;
+			// If player has reached max x and y, they have won.
+			if(this.players[i].carX >= maxXTravel && this.players[i].carY >= maxYTravel){
+				console.log("player " + this.players[i].carName + " has won!");
+			}
+		}
+	}
 }
 
 // Create Car constructor to create car attributes and functions 
 function Car(num){
 	this.carId = num;
-	this.carName = `car${num}`;
+	this.carName = `Player ${num + 1}`;
 	this.carIcon = `<i carId="${this.carId}" carname="${this.carName} "class="fa fa-motorcycle" aria-hidden="true"></i>`;
 	this.carX = 0; 
 	this.carY = 0; 
@@ -41,13 +55,11 @@ function Car(num){
 		this.carWidth = $('i').width();
 	}
 	this.move = function(key){
-		let racetrackWidth = $('#racetrack').width();
-		let racetrackHeight = $('#racetrack').height();
-		let isXMax = this.carX <=racetrackWidth-this.carWidth;
-		let isYMax = this.carY <=racetrackHeight-this.carHeight;
-		let isXMin = this.carX >=0;
-		let isYMin = this.carY >=0;
-		let pixelIncrement = 10;
+		let isXMax = this.carX <= race.trackSizeX - this.carWidth;
+		let isYMax = this.carY <= race.trackSizeY - this.carHeight;
+		let isXMin = this.carX >= 0;
+		let isYMin = this.carY >= 0;
+		let pixelIncrement = 20;
 		if((event.keyCode === 39 || event.keyCode === 68) && isXMax){
 			this.carX += pixelIncrement;
 			$(`i[carId=${this.carId}]`).css('left',this.carX + 'px').removeClass('up down left').addClass('right');
@@ -67,12 +79,12 @@ function Car(num){
 	}
 }
 
+let race = new Game();
 $(document).ready(function(){
 	console.log("Sanity check!");
-	let race = new Game();
 	race.createTrack();
 	race.createCars();
-	console.log(race.players);
+	console.log(race);
 
 	// Create Key press actions to move for both players in any direction 
 	$('body').on('keyup',function(event){
@@ -84,6 +96,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			race.players[1].move(event.keyCode);
 		}
+		race.checkWin();
 	})
 });
 
