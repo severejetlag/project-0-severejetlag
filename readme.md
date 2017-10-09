@@ -1,26 +1,21 @@
-# <img src="https://cloud.githubusercontent.com/assets/7833470/10423298/ea833a68-7079-11e5-84f8-0a925ab96893.png" width="60"> Project 0 - Racing Game
+# Project 0 - Racing Game (severejetlag)
 
 ## Overview
 
 ###### What is this project?
 
-You'll be building one more browser game, synthesizing all the knowledge you've packed into your brain over the past two weeks! You'll be leveraging the power of jQuery to create a **Racing Game**, where two players can move their "cars" across the browser to compete for the win.
-
-**You will be working individually for this project**, but we encourage you to get help from your peers and even pair-program on each other's projects when bugs arise.
+This is project 0 for the General Assembly WDI course in which we were trying to create a simple racing game where two plaers can race against each other using key presses to try and navigate across the page. 
 
 ---
 
-## Topics Covered
+## Tech Specs
 
-###### What skills are we using?
+This is a brief overview of the technology used in making this project
 
-By the time you submit this project, you will have leveled-up in many big themes in the course:
+* **OOP**: I attempted to used Object Oriented Programming techniques as much as possible, creating methods that made practical sense with manipulating objects. 
+* **JQuery**: I used jquery to handle DOM manipulation along with event handling 
+* **SCSS/CSS**: I used SCSS to handle CSS3 animations and transformations 
 
-* **Terminal**: Practice interacting with the computer and navigating the file-system from the Command Line.
-* **Git**: Manage and interact with a git repository to store changes to code.
-* **JavaScript**: Work with objects and events, while learning how to strategically solve problems and resolve errors.
-* **Front-End**: Work on HTML structure, CSS styles, and animating documents within a browser. Also, learn how to respond to actions your users take and the data they input into the browser.
-* **Documentation**: Document your code and your GitHub repository so others understand what you've built.
 
 ---
 
