@@ -17,28 +17,4 @@ This is a brief overview of the technology used in making this project
 * **SCSS/CSS**: I used SCSS to handle CSS3 animations and transformations 
 
 
----
-
-## Timeline
-
-###### When is it due?
-
-* **Assigned:** Friday, Nov 6th
-* **Due:** Monday, Nov 9th @ 9:17am
-
----
-
-## Technical Requirements
-###### What technologies will I be using?
-
-**Your app must:**
-
-* Use **jQuery**
-* Minimize the use of global variables
-* Abide by the **separation of concerns** principle with separate HTML, CSS, and JavaScript files
-* Leverage CSS styling for a pleasing and logical user experience
-* Stick with the **KISS** (Keep It Simple Stupid) and **DRY** (Don’t Repeat Yourself) principles
-* Include **a public Github repository** with frequent commits and descriptive commit messages!
-* Have useful documentation that you or other developers can reference later.
-
 
