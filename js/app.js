@@ -32,12 +32,14 @@ function Game(){
 			let maxYTravel = this.trackSizeY - this.players[i].carHeight;
 			// If player has reached max x and y, they have won.
 			if(this.players[i].carX >= maxXTravel && this.players[i].carY >= maxYTravel){
-				displayModal(`player ${this.players[i].carName} has won!`);
+				// Display winner
+				displayModal(`player ${this.players[i].carName} wins!`);
+				// Empty players
 				this.players = [];
+				// Remove icons
 				$('#racetrack i').remove();
-				console.log(race);
+				// Reset icons
 				this.createCars();
-				console.log(race);
 			}
 		}
 	}

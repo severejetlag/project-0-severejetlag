@@ -2,7 +2,8 @@ body {
   background: #ddd; }
 
 #racetrack h2 {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #880000; }
   #racetrack h2.finish {
     color: #008800;
     text-align: right; }
