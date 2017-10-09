@@ -1,58 +1,90 @@
 body {
   background: #ddd; }
 
-#racetrack {
-  position: relative;
-  background: #333; }
-  #racetrack .road {
-    background: #333;
-    height: 100px; }
-  #racetrack .turn-right {
-    background: #333;
-    height: 100px;
-    margin-left: 90%; }
-  #racetrack .turn-left {
-    background: #333;
-    height: 100px;
-    margin-right: 90%; }
-  #racetrack i {
+#racetrack h2 {
+  text-transform: uppercase; }
+  #racetrack h2.finish {
+    color: #008800;
+    text-align: right; }
+#racetrack .road {
+  background: #333;
+  height: 300px;
+  position: relative; }
+#racetrack i {
+  position: absolute;
+  top: 0px;
+  left: 40px;
+  font-size: 3em;
+  color: #ff5555;
+  -moz-transition: 0.2s;
+  -o-transition: 0.2s;
+  -webkit-transition: 0.2s;
+  transition: 0.2s; }
+  #racetrack i.up {
+    -ms-transform: rotate(270deg);
+    /* IE 9 */
+    -webkit-transform: rotate(270deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(270deg); }
+  #racetrack i.right {
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(0deg); }
+  #racetrack i.down {
+    -ms-transform: rotate(90deg);
+    /* IE 9 */
+    -webkit-transform: rotate(90deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(90deg); }
+  #racetrack i.left {
+    -ms-transform: rotate(0deg);
+    /* IE 9 */
+    -webkit-transform: rotate(0deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(0deg);
+    -ms-transform: rotatey(180deg);
+    /* IE 9 */
+    -webkit-transform: rotatey(180deg);
+    /* Chrome, Safari, Opera */
+    transform: rotatey(180deg); }
+  #racetrack i + i {
+    left: 0;
+    top: 30px;
+    color: #55ff55; }
+
+#modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: -100000px;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0; }
+  #modal.active {
+    opacity: 1;
+    left: 0;
+    -moz-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s; }
+  #modal .container {
+    text-align: center;
+    background: #fff;
+    width: 400px;
+    min-height: 200px;
+    left: 50%;
+    top: 50%;
+    margin-left: -150px;
+    margin-top: -100px;
     position: absolute;
-    top: 0%;
-    left: 0%;
-    font-size: 3em;
-    color: #fff;
-    -moz-transition: 0.2s;
-    -o-transition: 0.2s;
-    -webkit-transition: 0.2s;
-    transition: 0.2s; }
-    #racetrack i.up {
-      -ms-transform: rotate(270deg);
-      /* IE 9 */
-      -webkit-transform: rotate(270deg);
-      /* Chrome, Safari, Opera */
-      transform: rotate(270deg); }
-    #racetrack i.right {
-      -ms-transform: rotate(0deg);
-      /* IE 9 */
-      -webkit-transform: rotate(0deg);
-      /* Chrome, Safari, Opera */
-      transform: rotate(0deg); }
-    #racetrack i.down {
-      -ms-transform: rotate(90deg);
-      /* IE 9 */
-      -webkit-transform: rotate(90deg);
-      /* Chrome, Safari, Opera */
-      transform: rotate(90deg); }
-    #racetrack i.left {
-      -ms-transform: rotate(0deg);
-      /* IE 9 */
-      -webkit-transform: rotate(0deg);
-      /* Chrome, Safari, Opera */
-      transform: rotate(0deg);
-      -ms-transform: rotatey(180deg);
-      /* IE 9 */
-      -webkit-transform: rotatey(180deg);
-      /* Chrome, Safari, Opera */
-      transform: rotatey(180deg); }
+    border-radius: 10px; }
+  #modal p {
+    padding: 30px 20px;
+    font-size: 1.5em;
+    line-height: 2em;
+    text-transform: uppercase; }
 
 /*# sourceMappingURL=style.css.map */

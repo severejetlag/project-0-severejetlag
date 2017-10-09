@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Racecar Game!</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/141dce00c5.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -10,12 +11,27 @@
 </head>
 <body>
 	<header id="header">
-		<h1>Welcome to the Track!</h1>
-	</header>
-	<main id="main">
 		<div class="container">
 			<div class="row">
-				<section id="racetrack"></section>
+				<h1>Welcome to the Race!</h1>
+			</div>
+		</div>
+	</header>
+	<main id="main">
+		<div id="modal">
+     		<div class="container">
+	        	<p></p>
+	        	<button type="button" class="btn btn-default">OK</button>
+	        </div>
+      	</div>
+		<div class="container">
+			<div class="row">
+				<p>Each player can use the keys (Player 1: Directional Arrows; PLayer 2: WASD) to drive his or her bike to the finish line on the bottom right. </p>
+				<section id="racetrack">
+					<h2>Start!</h2>
+					<div class="road"></div>
+					<h2 class="finish">Finish!</h2>
+				</section>
 			</div>
 		</div>
 	</main>

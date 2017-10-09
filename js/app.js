@@ -1,6 +1,6 @@
 // Create Game constructor to hold functions for creating the baord and each car object
 function Game(){
-	this.laps = 1;
+	this.size = 1;
 	this.playerCount = 2;
 	this.players = []; 
 	this.trackSizeY = 0;
@@ -9,11 +9,11 @@ function Game(){
 	this.createTrack = function(){
 		for(let i = 0; i < this.laps;i++){
 			$racetrack = $('#racetrack');
-			let lapHTML = '<div class="road"></div><div class="turn-right"></div><div class="road"></div><div class="turn-left"></div>';
+			let lapHTML = '<div class="road"></div>';
 			$racetrack.append(lapHTML);
 		}
-		this.trackSizeX = $('#racetrack').width();
-		this.trackSizeY = $('#racetrack').height();
+		this.trackSizeX = $('#racetrack .road').width();
+		this.trackSizeY = $('#racetrack .road').height();
 	}
 	// Creates array of car objects. 
 	this.createCars = function(){
@@ -32,7 +32,12 @@ function Game(){
 			let maxYTravel = this.trackSizeY - this.players[i].carHeight;
 			// If player has reached max x and y, they have won.
 			if(this.players[i].carX >= maxXTravel && this.players[i].carY >= maxYTravel){
-				console.log("player " + this.players[i].carName + " has won!");
+				displayModal(`player ${this.players[i].carName} has won!`);
+				this.players = [];
+				$('#racetrack i').remove();
+				console.log(race);
+				this.createCars();
+				console.log(race);
 			}
 		}
 	}
@@ -49,7 +54,7 @@ function Car(num){
 	this.carHeight = 0; 
 	// create dom elements for car icons
 	this.createCar = function(){
-		$racetrack = $('#racetrack');
+		$racetrack = $('#racetrack .road');
 		$racetrack.append(this.carIcon);
 		this.carHeight = $('i').height();
 		this.carWidth = $('i').width();
@@ -79,26 +84,49 @@ function Car(num){
 	}
 }
 
+// Initialize global race variable to hold Game() object 
 let race = new Game();
 $(document).ready(function(){
 	console.log("Sanity check!");
+
+	// Initiate track HTML and car Objects
 	race.createTrack();
 	race.createCars();
-	console.log(race);
 
+	// Create event listener for modal close
+	$('#modal button').on('click', function(event){
+		event.preventDefault();
+		$('#modal').removeClass('active');
+	})
+
+	// Boolean to check modal 
 	// Create Key press actions to move for both players in any direction 
 	$('body').on('keyup',function(event){
-		if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
-			event.preventDefault();
-			race.players[0].move(event.keyCode);
+		// Check for left, right, up, and down keypresses
+		if(!$('#modal').hasClass('active')){
+			if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
+				event.preventDefault();
+				race.players[0].move(event.keyCode);
+			}
+			// Check W,A,S,D key presses
+			if(event.keyCode === 65 || event.keyCode === 87 || event.keyCode === 83 || event.keyCode === 68){
+				event.preventDefault();
+				race.players[1].move(event.keyCode);
+			}
+			// CHeck race win
+			race.checkWin();
 		}
-		if(event.keyCode === 65 || event.keyCode === 87 || event.keyCode === 83 || event.keyCode === 68){
-			event.preventDefault();
-			race.players[1].move(event.keyCode);
-		}
-		race.checkWin();
+		if (event.keyCode === 27 || event.keyCode===13) { 
+	        $('#modal').removeClass('active');
+	    }
 	})
 });
+
+// Function to display modal with modal text
+function displayModal(text){
+	$('#modal p').text(text);
+	$('#modal').addClass('active');
+}
 
 
 
